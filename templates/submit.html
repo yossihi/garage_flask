@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block title %}Submit{% endblock %}
+{% block style %}
+{{ super() }}
+<style>
+    .scrollable-list {
+        max-height: 200px;
+        /* Set a maximum height for the list */
+        overflow-y: auto;
+        /* Enable vertical scrolling */
+        border: 1px solid #ccc;
+        /* Optional: Add a border for better visibility */
+        padding: 5px;
+        /* Optional: Add some padding */
+        margin-left: 15px;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<h2>welcome {{fName}} {{lName}}</h2>
+<h1>Car Information Form</h1>
+<div style="display: flex;">
+    <form action="/submit_car" method="post">
+        <label for="brand">Car Brand:</label>
+        <input type="text" id="brand" name="brand" required><br><br>
+
+        <label for="model">Car Model:</label>
+        <input type="month" id="model" name="model" required><br><br>
+
+        <label for="color">Car Color:</label>
+        <input type="text" id="color" name="color" required><br><br>
+
+        <label for="license">License Plate:</label>
+        <input type="number" id="license" name="license" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+    <div class="scrollable-list">
+        <ul>
+            {% for car in cars %}
+                <li>brand: {{car["brand"] }} <br>
+                    Model: {{car["model"]}} <br>
+                    Color: {{car["color"]}} <br>
+                    License: {{car["license"]}} <br>
+                </li> <br>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

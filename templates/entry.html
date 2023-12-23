@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block title %}Entry page {% endblock %}
+{% block style %}
+{{ super() }}
+<style>
+  form {
+    background: #ddb282;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  label,
+  input {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  .buttons {
+    display: flex;
+  }
+
+  .button {
+    margin: 5px;
+    height: 30px;
+    width: 70px;
+    background-color: #050505;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+  }
+
+</style>
+{% endblock %}
+{% block body %}
+<h1>Garage Entry</h1>
+<form action="/submit" method="post">
+  <h3>Sign In:</h3>
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name">
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password">
+  <input class="button" type="submit" value="Submit">
+</form>
+<div class="buttons">
+    <a href="/register"><button class="button">Register</button></a>
+  </div>
+<h2>{{msg}}</h2>
+{% endblock %}
